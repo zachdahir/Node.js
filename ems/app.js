@@ -20,6 +20,23 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
+var mongoose = require("mongoose");
+var Employee = require("./models/employee");
+
+//Connect to mongo server
+var mongoDB = "mongodb+srv://zdahir:Nemo3125@buwebdev-cluster-1-7ahfl.mongodb.net/EMS";
+mongoose.connect(mongoDB, {
+    useMongoClient: true
+});
+
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+
+//error display and success display
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+db.once("open", function(){
+    console.log("Application connected to mLab MongoDB instance");
+});
 
 var app = express();
 
@@ -34,6 +51,12 @@ app.get("/", function(request, response) {
     title: "Home page",
   });
 });
+
+//create employee object
+var employee = new Employee({
+  firstName: "Zachary",
+  lastName: "Dahir"
+})
 
 //create server on port 8080
 http.createServer(app).listen(8080, function(){
