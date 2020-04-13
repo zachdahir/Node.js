@@ -1,0 +1,24 @@
+<table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>First</th>
+        <th>Last</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (employees.length) { %>
+        <% employees.forEach(function (Entry) { %>
+          <tr>
+            <td><%= Entry.firstName %></td>
+            <td><%= Entry.lastName %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td>
+           No Entries<a href="/new">Add one!</a>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
