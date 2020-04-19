@@ -5,29 +5,37 @@
 <%- include("navbar"); %>
     <div class="container">
     <br><br>
-    
+    <!--Create card for new employee form-->
+    <div class="card">
+        <div class="card-title">
     <h3>Enter Employee Name:</h3>
-    <br>
+    </div>
 
+    <div class="card-body">
     <form method="post" action="/process">
     <div class="form-group">
+        <!--Label and input for employee first name-->
         <label for="txtFirstName">First Name:</label>
         <input type="text" class="form-control" id="txtFirstName" name="txtFirstName"/>
     </div>
 
     <div class="form-group">
+        <!--Label and input for employee last name-->
         <label for="txtLastName">Last Name:</label>
         <input type="text" class="form-control" id="txtLastName" name="txtLastName"/>
     </div>
 
     <div class="form-group">
+        <!--csrf token and submit button for new employee-->
         <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
 
-        <button type="submit" class="btn btn-primary float-right">Submit</button>
+        <button type="submit" class="btn btn-primary float-right">Add Employee</button>
     </div>
     </form>
     <a href="/">Return to Home Page</a>
 </div>
+</div>
+    </div>
 
 <%- include("footer"); %>
 <%- include("scripts"); %>

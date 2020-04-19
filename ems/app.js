@@ -1,9 +1,9 @@
 /*
 ============================================
-; Title: Assignment 6.4
+; Title: Assignment 9.3
 ; Author: Zach Dahir
-; Date: 3-20-20
-; Description: EMS app
+; Date: 4-18-20
+; Description: Its in the cloud
 ;===========================================
 */
 
@@ -46,9 +46,10 @@ var csrfProtection = csrf({cookie: true});
 
 var app = express();
 
-//set path and view engine
+//set and use statements
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 8080);
 app.use(logger("short"));
 app.use(helmet.xssFilter());
 app.use(bodyParser.urlencoded({
@@ -61,6 +62,7 @@ app.use(function(request, response, next){
   response.locals.csrfToken = token;
   next();
 });
+app.use('/css', express.static('css'));
 
 //get index page and display title
 app.get("/", function(request, response) {
@@ -82,6 +84,26 @@ app.get("/", function(request, response) {
 app.get('/new', function(req, res) {
   res.render('new', {
     title: 'EMS | New',
+  });
+});
+
+//get employee information page
+app.get("/view/:queryName", function(request, response){
+  var queryName = request.params['queryName'];
+  
+  Employee.find({'firstName': queryName}, function(error, employees){
+    if(error) throw error;
+    console.log(employees);
+
+    if(employees.length > 0){
+      response.render("view", {
+        title: "Employee Record",
+        employee: employees
+      })
+    }
+    else{
+      response.redirect("/")
+    }
   });
 });
 
@@ -120,8 +142,8 @@ var employee = new Employee({
 })
 
 //create server on port 8080
-http.createServer(app).listen(8080, function(){
-  console.log("Application started on port 8080!");
+http.createServer(app).listen(app.get("port"), function(){
+  console.log("Application started on port " + app.get("port"))
 });
 
 //end program

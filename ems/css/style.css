@@ -1,0 +1,25 @@
+.head {
+    background-color: #878f99;
+}
+
+body {
+    background-color: #7e9a9a;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding-bottom: 25px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: darkgray;
+    padding-top: 1%;
+}
+
+.card {
+    padding: 1%;
+}

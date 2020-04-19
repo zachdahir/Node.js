@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<%- include("header"); %>
+
+<body>
+<%- include("navbar"); %>
+<div role="main" class="container" style="width: 50%;">
+<br><br>
+    <div class="card">
+        <!--card to display employee information-->
+    <div class="card-title">
+    <h2 class="text-center">--Employee Record--</h2>
+        <div>
+        </div>
+            <div class="form-group">
+                <!--display employee first name-->
+                <label for="txtFirstName">First Name:</label>
+                <input type="text"
+                       class="form-control"
+                       id="txtFirstName"
+                       readonly
+                       value="<%= employee[0].firstName %>"
+                       name="txtFirstName"/>
+
+                <label for="txtLastName">Last Name:</label>
+                <!--display employee last name-->
+                <input type="text"
+                       class="form-control"
+                       id="txtLastName"
+                       readonly
+                       value="<%= employee[0].lastName %>"
+                       name="txtLastName"/>
+            </div>
+        </div>
+        <a href="/">&larr; Back</a>
+</div>
+</div>
+<%- include("scripts"); %>
+<%- include("footer"); %>
+</body>
+</html

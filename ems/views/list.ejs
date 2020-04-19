@@ -1,4 +1,4 @@
-<table class="table table-dark table-hover">
+<table class="table table-dark table-striped table-hover">
     <thead>
       <tr>
         <th>First</th>
@@ -6,11 +6,13 @@
       </tr>
     </thead>
     <tbody>
+      <!--For each to display each employee in table-->
       <% if (employees.length) { %>
         <% employees.forEach(function (Entry) { %>
           <tr>
             <td><%= Entry.firstName %></td>
             <td><%= Entry.lastName %></td>
+            <td><a href="/view/<%= Entry.firstName%>">VIEW</a></td>
           </tr>
         <% }) %>
       <% } else { %>
