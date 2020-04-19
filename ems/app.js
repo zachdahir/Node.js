@@ -7,14 +7,6 @@
 ;===========================================
 */
 
-//program start
-const header = require('../dahir-header.js');
-
-//Entering parameters into the header display function
-
-console.log(header.display("Zach", "Dahir", "Assignment 6.4"));
-console.log("");
-
 //Require statements
 var express = require("express");
 var http = require("http");
